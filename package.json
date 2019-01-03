@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.16.4",
+    "express-static": "^1.2.6",
     "git": "^0.1.5",
     "gulp": "^3.9.1",
     "gulp-less": "^4.0.1",

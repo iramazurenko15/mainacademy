@@ -1,20 +1,42 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
-var browserSync = require('browser-sync');
 var plumber = require('gulp-plumber');
 var pug = require('gulp-pug');
 var notify = require('gulp-notify');
+var express = require('express');
+var path = require('path');
+var app = express();
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views/pages'));
+app.use(express.static(path.join(__dirname, "public")));
+
+
+app.get('/', function (req, res) {
+  res.render('index');
+});
+
+app.get('/movies', function (req, res) {
+  res.render('movies');
+});
+
+
+
+app.listen(3000, function() {
+  console.log('Server started on port 3000');
+});
+
 
 gulp.task('less', function(){ 
-    return gulp.src('app/less/**/*.less') 
+    return gulp.src('public/less/style.less') 
         .pipe(plumber())
         .pipe(less()) 
-        .pipe(gulp.dest('app/css'))
-        .pipe(browserSync.reload({stream: true}))
+        .pipe(gulp.dest('public/css'))
+        
 });
 
 gulp.task('pug', function() {
-  return gulp.src('app/pug/pages/*.pug')
+  return gulp.src('views/pages/*.pug')
       .pipe(plumber())
       .pipe(pug({
             pretty: true
@@ -22,24 +44,11 @@ gulp.task('pug', function() {
       .on("error", notify.onError(function(error) {
             return "Message to the notifier: " + error.message;
         }))
-      .pipe(gulp.dest('app'))
-      .pipe(browserSync.stream());
+      .pipe(gulp.dest(__dirname))
 });
 
-
-
-gulp.task('browser-sync', function() { // Создаем таск browser-sync
-    browserSync({ // Выполняем browser Sync
-        server: { // Определяем параметры сервера
-            baseDir: 'app' // Директория для сервера - app
-        },
-        notify: false // Отключаем уведомления
-    });
-});
-
-
-gulp.task('watch', ['browser-sync', 'less', 'pug'], function() {
-    gulp.watch('app/less/**/*.less', ['less']); 
-    gulp.watch('app/pug/**/*.pug', ['pug']);
+gulp.task('watch', ['less', 'pug'], function() {
+    gulp.watch('public/less/style.less', ['less']); 
+    gulp.watch('views/**/*.pug', ['pug']);
 });
 
