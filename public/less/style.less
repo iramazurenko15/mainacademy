@@ -1,0 +1,68 @@
+@main: #333;
+@hover:#f30;
+@active: #f60;
+
+body {
+	font-family: 'Open Sans', sans-serif !important;
+	margin: 0px;
+}
+a:hover, a:focus {
+	color:@hover !important;
+}
+a:active {
+	color:@active !important;
+}
+
+header {
+	background: #000;
+	a {
+		text-transform: uppercase;
+		color: #fff;
+	}
+	.active a {
+		color:@active !important;
+	}
+	.logo img {
+		width: 100%;
+	}
+	.navbar-brand {
+		padding: 7px;
+	}
+}
+.navbar-toggle .icon-bar{
+	background: @active;
+}
+
+.item {
+	min-height: 63vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top;
+
+}
+.title {
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  font-size: 42px;
+  color:#fff;
+}
+.owl-nav {
+	display: none;
+}
+.owl-dots {
+	position: absolute;
+  bottom: 15px;
+  left: 50%;
+}
+.mfp-content {
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+}
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+/**
+ * ./data/cartoons.json
+ */
+
+{
+	"cartoons": [
+		{
+			"title":"Шрек",
+			"year": "2001"
+		},
+		{
+			"title":"Смолфут",
+			"year": "2018"
+		}
+	]
+}

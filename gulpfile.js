@@ -1,11 +1,15 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var plumber = require('gulp-plumber');
-var pug = require('gulp-pug');
-var notify = require('gulp-notify');
-var express = require('express');
-var path = require('path');
-var app = express();
+var gulp = require('gulp'),
+    less = require('gulp-less'),
+    plumber = require('gulp-plumber'),
+    pug = require('gulp-pug'),
+    notify = require('gulp-notify'),
+    express = require('express'),
+    path = require('path'),
+    app = express(),
+    fs = require('fs'),
+    data = require('gulp-data'),
+    merge = require('gulp-merge-json');
+
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views/pages'));
@@ -19,8 +23,6 @@ app.get('/', function (req, res) {
 app.get('/movies', function (req, res) {
   res.render('movies');
 });
-
-
 
 app.listen(3000, function() {
   console.log('Server started on port 3000');
@@ -36,8 +38,11 @@ gulp.task('less', function(){
 });
 
 gulp.task('pug', function() {
-  return gulp.src('views/pages/*.pug')
+  return gulp.src('/views/**/*.pug')
       .pipe(plumber())
+      .pipe(data(function(file) {
+            return JSON.parse(fs.readFileSync('/data/data.json'))
+        }))
       .pipe(pug({
             pretty: true
         }))
@@ -45,6 +50,38 @@ gulp.task('pug', function() {
             return "Message to the notifier: " + error.message;
         }))
       .pipe(gulp.dest(__dirname))
+});
+
+
+gulp.task('pug:data', function() {
+    return gulp.src('/data/**/*.json')
+        .pipe(merge({
+            fileName: 'data.json',
+            edit: (json, file) => {
+                // Extract the filename and strip the extension
+                var filename = path.basename(file.path),
+                    primaryKey = filename.replace(path.extname(filename), '');
+
+                // Set the filename as the primary key for our JSON data
+                var data = {};
+                data[primaryKey.toUpperCase()] = json;
+
+                return data;
+            }
+        }))
+        .pipe(gulp.dest('/temp'));
+});
+
+gulp.task('pug', ['pug:data'], function() {
+    return gulp.src('/views/**/*.pug')
+        .pipe(data(function() {
+            return JSON.parse(fs.readFileSync('/temp/data.json'))
+        }))
+        .pipe(pug({
+            pretty: true,
+            basedir: './'
+        }))
+        .pipe(gulp.dest(__dirname));
 });
 
 gulp.task('watch', ['less', 'pug'], function() {
