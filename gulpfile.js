@@ -29,28 +29,14 @@ app.listen(3000, function() {
 });
 
 
-gulp.task('less', function(){ 
-    return gulp.src('public/less/style.less') 
+gulp.task('less', function(){
+    return gulp.src('public/less/style.less')
         .pipe(plumber())
-        .pipe(less()) 
+        .pipe(less())
         .pipe(gulp.dest('public/css'))
-        
+
 });
 
-gulp.task('pug', function() {
-  return gulp.src('/views/**/*.pug')
-      .pipe(plumber())
-      .pipe(data(function(file) {
-            return JSON.parse(fs.readFileSync('/data/data.json'))
-        }))
-      .pipe(pug({
-            pretty: true
-        }))
-      .on("error", notify.onError(function(error) {
-            return "Message to the notifier: " + error.message;
-        }))
-      .pipe(gulp.dest(__dirname))
-});
 
 
 gulp.task('pug:data', function() {
@@ -72,8 +58,8 @@ gulp.task('pug:data', function() {
         .pipe(gulp.dest('/temp'));
 });
 
-gulp.task('pug', ['pug:data'], function() {
-    return gulp.src('/views/**/*.pug')
+gulp.task('pug-init', ['pug:data'], function() {
+    return gulp.src('./views/**/*.pug')
         .pipe(data(function() {
             return JSON.parse(fs.readFileSync('/temp/data.json'))
         }))
@@ -81,11 +67,10 @@ gulp.task('pug', ['pug:data'], function() {
             pretty: true,
             basedir: './'
         }))
-        .pipe(gulp.dest(__dirname));
+        .pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', ['less', 'pug'], function() {
-    gulp.watch('public/less/style.less', ['less']); 
+    gulp.watch('public/less/style.less', ['less']);
     gulp.watch('views/**/*.pug', ['pug']);
 });
-
