@@ -11,17 +11,30 @@ var gulp = require('gulp'),
     merge = require('gulp-merge-json');
 
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views/pages'));
+//app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views/pages'));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+
+// app.get('/', function (req, res) {
+//   res.render('index');
+// });
+
+// app.get('/movies', function (req, res) {
+//   res.render('movies');
+// });
+
+app.set('views', path.join(__dirname, 'build/pages'));
 app.use(express.static(path.join(__dirname, "public")));
 
-
-app.get('/', function (req, res) {
-  res.render('index');
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname+'/build/pages/index.html'));
 });
 
+
 app.get('/movies', function (req, res) {
-  res.render('movies');
+
+  res.sendFile(path.join(__dirname+'/build/pages/movies.html'));
 });
 
 app.listen(3000, function() {
@@ -40,28 +53,28 @@ gulp.task('less', function(){
 
 
 gulp.task('pug:data', function() {
-    return gulp.src('/data/**/*.json')
-        .pipe(merge({
-            fileName: 'data.json',
-            edit: (json, file) => {
-                // Extract the filename and strip the extension
-                var filename = path.basename(file.path),
-                    primaryKey = filename.replace(path.extname(filename), '');
+  return gulp.src('data/**/*.json')
+      .pipe(merge({
+          fileName: 'data.json',
+          edit: (json, file) => {
+              // Extract the filename and strip the extension
+              var filename = path.basename(file.path),
+                  primaryKey = filename.replace(path.extname(filename), '');
 
-                // Set the filename as the primary key for our JSON data
-                var data = {};
-                data[primaryKey.toUpperCase()] = json;
+              // Set the filename as the primary key for our JSON data
+              var data = {};
+              data[primaryKey.toUpperCase()] = json;
 
-                return data;
-            }
-        }))
-        .pipe(gulp.dest('/temp'));
+              return data;
+          }
+      }))
+      .pipe(gulp.dest('./temp'));
 });
 
-gulp.task('pug-init', ['pug:data'], function() {
+gulp.task('pug', ['pug:data'], function() {
     return gulp.src('./views/**/*.pug')
         .pipe(data(function() {
-            return JSON.parse(fs.readFileSync('/temp/data.json'))
+            return JSON.parse(fs.readFileSync('./temp/data.json'))
         }))
         .pipe(pug({
             pretty: true,
@@ -72,5 +85,9 @@ gulp.task('pug-init', ['pug:data'], function() {
 
 gulp.task('watch', ['less', 'pug'], function() {
     gulp.watch('public/less/style.less', ['less']);
-    gulp.watch('views/**/*.pug', ['pug']);
+
+    gulp.watch('views/**/*.pug', ['pug:data','pug']);
 });
+
+gulp.task('default', ['less',
+'pug','watch']);

@@ -8,5 +8,5 @@ block content
 		.item(style="background-image:url('/img/shpion-kotoryiy-menya-kinul.jpg')")
 		.item(style="background-image:url('/img/vo-vlasti-stihii.jpg')")
 	ul.cartoons-list
-		//- each cartoon in cartoons
-		//- 	li= cartoon.title
+		each cartoon in CARTOONS.cartoons
+			li= cartoon.title

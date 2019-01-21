@@ -25,6 +25,9 @@ header .logo img {
 header .navbar-brand {
   padding: 7px;
 }
+header .navbar {
+  margin: 0;
+}
 .navbar-toggle .icon-bar {
   background: #f60;
 }
