@@ -7,14 +7,16 @@ block content
 		.item(style="background-image:url('/img/hotel-artemida.jpg')")
 		.item(style="background-image:url('/img/shpion-kotoryiy-menya-kinul.jpg')")
 		.item(style="background-image:url('/img/vo-vlasti-stihii.jpg')")
-	h2 Фильмы
-	.owl-carousel.owl-theme.item-slider
-		mixin movieCard(movie)
-			.item
-				img(src=movie.poster,alt=alt)
-				h3.title= movie.title
-				p= movie.year + ", " + movie.genre
-		for movie in MOVIES.movies
-			+movieCard(movie)
+	.container
+		.movies-block
+			h2 Фильмы
+			.owl-carousel.owl-theme.item-slider
+				mixin movieCard(movie)
+					.item
+						img(src=movie.poster,alt=alt)
+						h3.movie-title= movie.title
+						p= movie.year + ", " + movie.genre
+				for movie in MOVIES.movies
+					+movieCard(movie)
 
 

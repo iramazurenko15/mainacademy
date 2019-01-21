@@ -12,7 +12,9 @@ a:hover, a:focus {
 a:active {
 	color:@active !important;
 }
-
+.nav>li>a:focus, .nav>li>a:hover { 
+	background-color: transparent;
+}
 header {
 	background: #1a1a1a;
 	a {
@@ -36,22 +38,35 @@ header {
 	background: @active;
 }
 
-.main-slider .item {
-	min-height: 63vh;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top;
+.main-slider {
+	.item {
+		min-height: 63vh;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top;
 
+	}
+	.owl-dots {
+		position: absolute;
+		bottom: 15px;
+		left: 50%;
+	}
+	.owl-nav {
+		display: none;
+	}
 }
 
-.owl-nav {
-	display: none;
+.movie-title {
+	font-size: 16px;
+	font-weight: 600;
 }
-.owl-dots {
-	position: absolute;
-  bottom: 15px;
-  left: 50%;
+
+.movies-block {
+	padding: 40px;
 }
+
+
+
 
 
 

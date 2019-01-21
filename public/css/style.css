@@ -9,6 +9,10 @@ a:focus {
 a:active {
   color: #f60 !important;
 }
+.nav > li > a:focus,
+.nav > li > a:hover {
+  background-color: transparent;
+}
 header {
   background: #1a1a1a;
 }
@@ -37,11 +41,18 @@ header .navbar {
   background-size: cover;
   background-position: top;
 }
-.owl-nav {
-  display: none;
-}
-.owl-dots {
+.main-slider .owl-dots {
   position: absolute;
   bottom: 15px;
   left: 50%;
+}
+.main-slider .owl-nav {
+  display: none;
+}
+.movie-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.movies-block {
+  padding: 40px;
 }
