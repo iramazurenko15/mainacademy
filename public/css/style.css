@@ -10,7 +10,7 @@ a:active {
   color: #f60 !important;
 }
 header {
-  background: #000;
+  background: #1a1a1a;
 }
 header a {
   text-transform: uppercase;
@@ -31,18 +31,11 @@ header .navbar {
 .navbar-toggle .icon-bar {
   background: #f60;
 }
-.item {
+.main-slider .item {
   min-height: 63vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-}
-.title {
-  position: absolute;
-  top: 50%;
-  right: 20%;
-  font-size: 42px;
-  color: #fff;
 }
 .owl-nav {
   display: none;
@@ -51,9 +44,4 @@ header .navbar {
   position: absolute;
   bottom: 15px;
   left: 50%;
-}
-.mfp-content {
-  color: #fff;
-  font-size: 20px;
-  text-align: center;
 }
