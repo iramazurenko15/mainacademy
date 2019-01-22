@@ -3,4 +3,14 @@ extends ../main
 block title
 	| Фильмы
 block content
-	h1 фильмы
+	.container
+			.movies-block
+				h1.style-title-1 Популярные фильмы онлайн
+				.all-movies
+					mixin movieCard(movie)
+						.item
+							img(src=movie.poster,alt=alt)
+							h3.movie-title= movie.title
+							p= movie.year + ", " + movie.genre
+					for movie in MOVIES.movies
+						+movieCard(movie)

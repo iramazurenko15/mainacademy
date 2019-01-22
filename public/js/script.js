@@ -3,8 +3,7 @@ $(document).ready(function(){
   	items:1,
 		nav:true,
 		autoplay:true,
-		autoplayHoverPause:true,
-		nav:true
+		autoplayHoverPause:true
   });
 
   $(".owl-carousel.item-slider").owlCarousel({
@@ -14,6 +13,7 @@ $(document).ready(function(){
 		autoplayHoverPause:true,
 		nav:true,
 		margin: 25,
+		dots: false,
 		responsive:{
         0:{
             items:1

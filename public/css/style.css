@@ -2,6 +2,15 @@ body {
   font-family: 'Open Sans', sans-serif !important;
   margin: 0px;
 }
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+button {
+  outline: none;
+}
 a:hover,
 a:focus {
   color: #f30 !important;
@@ -12,6 +21,9 @@ a:active {
 .nav > li > a:focus,
 .nav > li > a:hover {
   background-color: transparent;
+}
+.style-title-1 {
+  margin-bottom: 20px;
 }
 header {
   background: #1a1a1a;
@@ -43,11 +55,28 @@ header .navbar {
 }
 .main-slider .owl-dots {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   left: 50%;
 }
 .main-slider .owl-nav {
-  display: none;
+  margin-top: 0px;
+}
+.main-slider .owl-prev,
+.main-slider .owl-next {
+  position: absolute;
+  top: 40%;
+}
+.main-slider .owl-prev span,
+.main-slider .owl-next span {
+  font-size: 50px;
+}
+.main-slider .owl-prev {
+  margin-left: 30px !important;
+  left: 0;
+}
+.main-slider .owl-next {
+  margin-right: 30px !important;
+  right: 0;
 }
 .movie-title {
   font-size: 16px;
@@ -55,4 +84,21 @@ header .navbar {
 }
 .movies-block {
   padding: 40px;
+}
+.item img {
+  margin-bottom: 15px;
+}
+.item-slider .owl-nav {
+  text-align: right;
+}
+.item-slider .owl-nav span {
+  font-size: 42px;
+}
+.all-movies {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -7px;
+}
+.all-movies .item {
+  margin: 0 7px 20px 7px;
 }
