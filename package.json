@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-static": "^1.2.6",
     "fs": "0.0.1-security",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
+    "gulp-ejs": "^3.3.0",
     "gulp-plumber": "^1.2.0"
   },
   "scripts": {

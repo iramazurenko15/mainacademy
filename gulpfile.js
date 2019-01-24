@@ -1,93 +1,55 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
+    ejs = require('gulp-ejs'),
     plumber = require('gulp-plumber'),
-    pug = require('gulp-pug'),
     notify = require('gulp-notify'),
     express = require('express'),
     path = require('path'),
-    app = express(),
-    fs = require('fs'),
-    data = require('gulp-data'),
-    merge = require('gulp-merge-json');
+    app = express();
 
 
-//app.set('view engine', 'pug');
-// app.set('views', path.join(__dirname, 'views/pages'));
-// app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, '/public')));
 
-// app.get('/', function (req, res) {
-//   res.render('index');
-// });
-
-// app.get('/movies', function (req, res) {
-//   res.render('movies');
-// });
-
-app.set('views', path.join(__dirname, 'build/pages'));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/pages/index.html'));
-});
-
-
-app.get('/movies', function (req, res) {
-
-  res.sendFile(path.join(__dirname+'/build/pages/movies.html'));
-});
 
 app.listen(3000, function() {
   console.log('Server started on port 3000');
 });
 
 
-gulp.task('less', function(){
-    return gulp.src('public/less/style.less')
-        .pipe(plumber())
-        .pipe(less())
-        .pipe(gulp.dest('public/css'))
+var routes = require('./routes');
+
+//home page
+app.get('/', routes.home);
+
+//movies page
+app.get('/movies', routes.movies);
+
+
+//movies single page
+app.get('/movie/:id?', routes.movieSingle);
+
+//404 page
+app.get('*', routes.notFound);
+
+
+
+gulp.task('less', function() {
+    return gulp.src('./public/less/style.less')
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(gulp.dest('./public/css'))
 
 });
 
 
 
-gulp.task('pug:data', function() {
-  return gulp.src('data/**/*.json')
-      .pipe(merge({
-          fileName: 'data.json',
-          edit: (json, file) => {
-              // Extract the filename and strip the extension
-              var filename = path.basename(file.path),
-                  primaryKey = filename.replace(path.extname(filename), '');
 
-              // Set the filename as the primary key for our JSON data
-              var data = {};
-              data[primaryKey.toUpperCase()] = json;
-
-              return data;
-          }
-      }))
-      .pipe(gulp.dest('./temp'));
+gulp.task('watch', ['less'], function() {
+    gulp.watch('./public/less/style.less', ['less']);
+    gulp.watch('./views/**/*.ejs', ['ejs']);
 });
 
-gulp.task('pug', ['pug:data'], function() {
-    return gulp.src('./views/**/*.pug')
-        .pipe(data(function() {
-            return JSON.parse(fs.readFileSync('./temp/data.json'))
-        }))
-        .pipe(pug({
-            pretty: true,
-            basedir: './'
-        }))
-        .pipe(gulp.dest('build/'));
-});
-
-gulp.task('watch', ['less', 'pug'], function() {
-    gulp.watch('public/less/style.less', ['less']);
-
-    gulp.watch('views/**/*.pug', ['pug:data','pug']);
-});
-
-gulp.task('default', ['less',
-'pug','watch']);
+gulp.task('default', ['less','watch']);
