@@ -1,0 +1,20 @@
+extends ../main
+
+block title
+	| Главная страница
+block content
+	.owl-carousel.owl-theme.main-slider
+		.item(style="background-image:url('/img/hotel-artemida.jpg')")
+		.item(style="background-image:url('/img/shpion-kotoryiy-menya-kinul.jpg')")
+		.item(style="background-image:url('/img/vo-vlasti-stihii.jpg')")
+	.container
+		.movies-block
+			h1.style-title-1 Фильмы
+			.owl-carousel.owl-theme.item-slider
+				mixin movieCard(movie)
+					.item
+						img(src=movie.poster,alt=alt)
+						h3.movie-title= movie.title
+						p= movie.year + ", " + movie.genre
+				for movie in movies
+					+movieCard(movie)
