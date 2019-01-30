@@ -12,8 +12,8 @@ block content
 			h1.style-title-1 Фильмы
 			.owl-carousel.owl-theme.item-slider
 				mixin movieCard(movie)
-					.item
-						img(src=movie.poster,alt=alt)
+					a.item(href=/movie/ + movie.id)
+						img(src=movie.poster,alt=movie.alt)
 						h3.movie-title= movie.title
 						p= movie.year + ", " + movie.genre
 				for movie in movies

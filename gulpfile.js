@@ -28,11 +28,11 @@ app.get('/', routes.home);
 app.get('/movies', routes.movies);
 
 
-// //movies single page
-// app.get('/movie/:id?', routes.movieSingle);
+//movies single page
+app.get('/movie/:id?', routes.movie_single);
 
-// //404 page
-// app.get('*', routes.notFound);
+//404 page
+app.get('*', routes.notFound);
 
 
 
@@ -43,8 +43,6 @@ gulp.task('less', function() {
     .pipe(gulp.dest('./public/css'))
 
 });
-
-
 
 
 gulp.task('watch', ['less'], function() {

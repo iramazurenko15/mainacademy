@@ -15,11 +15,22 @@ var movies = moviesJSON.movies;
   });
 };
 
-// exports.movieSingle = function(req, res ) {
-//   var movieId = req.params.id;
-//   res.send(movieId);
-// };
+exports.movie_single = function(req, res ) {
+  	var id = req.params.id;
+	var movies = moviesJSON.movies;
 
-// exports.notFound = function(req, res) {
-//   res.send('Page not found')
-// };
+	if (id >= 1 && id <= movies.length) {
+		var movie = movies[id - 1];		
+		res.render('movie_single', {
+			movies : movies,
+			movie : movie
+		});
+
+	} else {
+		res.render('notFound');
+	}
+};
+
+exports.notFound = function(req, res) {
+  res.render('notFound');
+};
