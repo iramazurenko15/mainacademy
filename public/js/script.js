@@ -12,6 +12,7 @@ $(document).ready(function(){
 		autoplay:true,
 		autoplayHoverPause:true,
 		nav:true,
+    navText:['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
 		margin: 25,
 		dots: false,
 		responsive:{

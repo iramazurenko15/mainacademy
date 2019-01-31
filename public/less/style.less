@@ -19,6 +19,15 @@ a:hover, a:focus {
 a:active {
 	color:@active !important;
 }
+a {
+	color: @main;
+	&:hover {
+		text-decoration: none !important;
+	}
+	&:focus {
+		text-decoration: none !important;
+	}
+}
 .nav>li>a:focus, .nav>li>a:hover { 
 	background-color: transparent;
 }
@@ -43,6 +52,9 @@ header {
 	.navbar {
 		margin: 0;
 	}
+	.form-control {
+		margin-right: 5px;
+	}
 }
 .navbar-toggle .icon-bar{
 	background: @active;
@@ -63,6 +75,9 @@ header {
 	}
 	.owl-nav {
 		margin-top: 0px;
+		button:hover {
+			background:transparent !important;
+		}
 	}
 	.owl-prev, .owl-next {
 		position: absolute;
@@ -98,9 +113,11 @@ header {
 
 .item-slider {
 	.owl-nav {
-		text-align: right;
+		position: absolute;
+		top: -70px;
+		right: 0;
 		span {
-			font-size: 42px;
+			font-size: 26px;
 		}
 	}
 }
@@ -111,12 +128,12 @@ header {
 	margin: -7px;
 	.item {
 		margin: 0 7px 20px 7px;
-
 	}
-
-
 }
 
+.single-poster img {
+	width: 100%;
+}
 
 
 

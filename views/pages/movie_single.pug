@@ -4,4 +4,10 @@ block title
 	| #{movie.title}
 
 block content
-	.container
+	.container.movies-block
+		.single-poster.col-md-3
+			img(src=movie.posterSingle,alt=movie.alt)
+		.single-info.col-md-9
+			h1= movie.title
+			p= movie.year + ", " + movie.genre
+			p= movie.description

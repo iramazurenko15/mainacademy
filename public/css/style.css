@@ -18,6 +18,15 @@ a:focus {
 a:active {
   color: #f60 !important;
 }
+a {
+  color: #333;
+}
+a:hover {
+  text-decoration: none !important;
+}
+a:focus {
+  text-decoration: none !important;
+}
 .nav > li > a:focus,
 .nav > li > a:hover {
   background-color: transparent;
@@ -44,6 +53,9 @@ header .navbar-brand {
 header .navbar {
   margin: 0;
 }
+header .form-control {
+  margin-right: 5px;
+}
 .navbar-toggle .icon-bar {
   background: #f60;
 }
@@ -60,6 +72,9 @@ header .navbar {
 }
 .main-slider .owl-nav {
   margin-top: 0px;
+}
+.main-slider .owl-nav button:hover {
+  background: transparent !important;
 }
 .main-slider .owl-prev,
 .main-slider .owl-next {
@@ -89,10 +104,12 @@ header .navbar {
   margin-bottom: 15px;
 }
 .item-slider .owl-nav {
-  text-align: right;
+  position: absolute;
+  top: -70px;
+  right: 0;
 }
 .item-slider .owl-nav span {
-  font-size: 42px;
+  font-size: 26px;
 }
 .all-movies {
   display: flex;
@@ -101,4 +118,7 @@ header .navbar {
 }
 .all-movies .item {
   margin: 0 7px 20px 7px;
+}
+.single-poster img {
+  width: 100%;
 }
