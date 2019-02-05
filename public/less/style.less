@@ -49,11 +49,8 @@ header {
 	.active a {
 		color:@active !important;
 	}
-	.logo img {
-		width: 100%;
-	}
-	.navbar-brand {
-		padding: 7px;
+	.logo {
+		margin-right: 30px;
 	}
 	.navbar {
 		margin: 0;
@@ -133,14 +130,28 @@ header {
 .all-movies {
 	display:flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
 	margin: -7px;
 	.item {
 		margin: 0 7px 20px 7px;
+		img {
+			margin-bottom: 15px;
+		}
 	}
 }
 
 .single-poster img {
 	width: 100%;
+}
+
+.single-info {
+	h1 {
+		margin-bottom: 5px;
+	}
+	.movie-year {
+		margin-bottom: 20px;
+		color:#666;
+	}
 }
 
 .footer {
@@ -172,6 +183,9 @@ header {
 	.movies-block {
 		padding: 40px 0;
 	}
+	.single-info h1 {
+		font-size: 30px;
+	}
 }
 @media screen and (max-width: 768px) {
 	.footer .footer-title {
@@ -180,6 +194,16 @@ header {
 	.footer-col:nth-child(1),
 	.footer-col:nth-child(2){
 		margin-bottom: 30px;
+	}
+	.single-info h1 {
+		font-size: 26px;
+	}
+
+}
+@media screen and (max-width: 767px) {
+	.single-poster img {
+		width: auto;
+		margin-bottom: 10px;
 	}
 }
 @media screen and (max-width: 460px) {
@@ -202,4 +226,42 @@ header {
 	.footer-col:not(:last-child) {
 		margin-bottom: 30px;
 	}
+}
+
+//change navbar breakpoint from 769px to 1024px 
+@media (max-width: 1024px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
 }
