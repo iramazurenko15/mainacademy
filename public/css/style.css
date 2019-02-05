@@ -8,6 +8,11 @@ h3,
 h4 {
   margin: 0;
 }
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 button {
   outline: none;
 }
@@ -59,12 +64,6 @@ header .form-control {
 .navbar-toggle .icon-bar {
   background: #f60;
 }
-.main-slider .item {
-  min-height: 63vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-}
 .main-slider .owl-dots {
   position: absolute;
   bottom: 20px;
@@ -96,20 +95,25 @@ header .form-control {
 .movie-title {
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 5px;
 }
 .movies-block {
-  padding: 40px;
-}
-.item img {
-  margin-bottom: 15px;
+  padding: 60px 0;
 }
 .item-slider .owl-nav {
   position: absolute;
-  top: -70px;
+  bottom: calc(100% - -20px);
   right: 0;
 }
+.item-slider .owl-nav button {
+  border: 1px solid #dedede !important;
+}
 .item-slider .owl-nav span {
+  padding: 4px 15px !important;
   font-size: 26px;
+}
+.item-slider .item img {
+  margin-bottom: 15px;
 }
 .all-movies {
   display: flex;
@@ -121,4 +125,60 @@ header .form-control {
 }
 .single-poster img {
   width: 100%;
+}
+.footer {
+  padding: 40px 0;
+  background: #e6e6e6;
+  font-size: 14px;
+}
+.footer .container {
+  padding: 0;
+}
+.footer .footer-title {
+  font-weight: bold;
+  color: #666;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.footer li {
+  margin-bottom: 10px;
+}
+.footer li a {
+  color: #a6a6a6;
+}
+@media screen and (max-width: 1024px) {
+  .movies-block {
+    padding: 40px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer .footer-title {
+    margin-bottom: 10px;
+  }
+  .footer-col:nth-child(1),
+  .footer-col:nth-child(2) {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .style-title-1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .movies-block,
+  .footer {
+    padding: 20px 0;
+  }
+  .footer-col {
+    width: 100% !important;
+  }
+  .item-slider .owl-nav {
+    bottom: calc(100% - -10px);
+  }
+  .item-slider .owl-nav span {
+    font-size: 22px;
+  }
+  .footer-col:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }

@@ -10,8 +10,8 @@ var gulp = require('gulp'),
 
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, './views/pages'));
-app.use(express.static(path.join(__dirname, './public')));
+app.set('views', path.join(__dirname, '/views/pages'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 app.listen(3000, function() {
