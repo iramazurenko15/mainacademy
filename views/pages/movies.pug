@@ -3,14 +3,13 @@ extends ../main
 block title
 	| Фильмы
 block content
-	.container
-			.movies-block
-				h1.style-title-1 Популярные фильмы онлайн
-				.all-movies
-					mixin movieCard(movie)
-						a.item(href=/movie/ + movie.id)
-							img(src=movie.poster,alt=movie.alt)
-							h3.movie-title= movie.title
-							p= movie.year + ", " + movie.genre
-					for movie in movies
-						+movieCard(movie)
+	.movies-block.movies-page.container
+		h1.style-title-1 Популярные фильмы онлайн
+		.all-movies
+			mixin movieCard(movie)
+				a.item(href=/movie/ + movie.id)
+					img(src=movie.poster,alt=movie.alt)
+					h3.movie-title= movie.title
+					p= movie.year + ", " + movie.genre
+			for movie in movies
+				+movieCard(movie)

@@ -127,15 +127,23 @@ header {
 	}
 }
 
+
+.movies-page {
+	padding-top: 30px;
+}
 .all-movies {
 	display:flex;
+	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	align-items:stretch;
 	margin: -7px;
 	.item {
+
 		margin: 0 7px 20px 7px;
 		img {
 			margin-bottom: 15px;
+			width: 100%;
 		}
 	}
 }
@@ -173,6 +181,14 @@ header {
 			color: #a6a6a6;
 		}
 	}
+	.phone {
+		font-size: 20px;
+		color: #666;
+	}
+	.mail {
+		font-size: 18px;
+		color: #666;
+	}
 
 }
 
@@ -209,7 +225,7 @@ header {
 @media screen and (max-width: 460px) {
 	.style-title-1 {
 		font-size: 28px;
-		margin-bottom: 10px;
+		text-align: center;
 	}
 	.movies-block, .footer {
 		padding: 20px 0;
@@ -228,6 +244,11 @@ header {
 	}
 }
 
+@media screen and (max-width: 429px) {
+	.all-movies {
+		justify-content: center;
+	}
+}
 //change navbar breakpoint from 769px to 1024px 
 @media (max-width: 1024px) {
     .navbar-header {
