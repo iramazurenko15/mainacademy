@@ -5,13 +5,10 @@ var express = require('express'),
     less = require('less-middleware');
 
 
-
-
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views/pages'));
 app.use(less(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, '/public')));
-
 
 
 app.listen(3000, function() {

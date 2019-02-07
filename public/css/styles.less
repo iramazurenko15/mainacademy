@@ -135,12 +135,11 @@ header {
 	display:flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items:stretch;
-	margin: -7px;
+	justify-content: flex-start;
+	margin: -12px;
 	.item {
-
-		margin: 0 7px 20px 7px;
+		width: calc(20% - 19px);
+		margin: 0 12px 12px 7px;
 		img {
 			margin-bottom: 15px;
 			width: 100%;
@@ -202,6 +201,9 @@ header {
 	.single-info h1 {
 		font-size: 30px;
 	}
+	.all-movies .item {
+		width: calc(33% - 19px);
+	}
 }
 @media screen and (max-width: 768px) {
 	.footer .footer-title {
@@ -241,6 +243,9 @@ header {
 	}
 	.footer-col:not(:last-child) {
 		margin-bottom: 30px;
+	}
+	.all-movies .item {
+		width: calc(50% - 19px);
 	}
 }
 
