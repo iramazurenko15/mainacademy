@@ -1,3 +1,4 @@
+include modal-window
 header
 	nav.navbar
 		.container-fluid
@@ -19,8 +20,13 @@ header
 						a(href="#") мультфильмы
 					li
 						a(href="#") сериалы и шоу
-				form(class="navbar-form navbar-right")
-					.form-group
-						input(class="form-control" type="text" placeholder="Поиск" aria-label="Search")
-						i(class="fas fa-search text-white ml-3" aria-hidden="true")
-					button(type="submit" class="btn btn-default") Искать
+				ul.nav.navbar-nav.navbar-right
+					li
+						form.navbar-form
+							.form-group
+								input(class="form-control" type="text" placeholder="Поиск" aria-label="Search")
+								i(class="fas fa-search text-white ml-3" aria-hidden="true")
+							button(type="submit" class="btn btn-default") Искать
+					li#sign-in
+						a Войти
+
