@@ -5,6 +5,7 @@
 body {
 	font-family: 'Open Sans', sans-serif !important;
 	margin: 0px;
+	background: #e6e6e6;
 
 }
 h1,h2,h3,h4 {
@@ -38,7 +39,7 @@ a {
 	background-color: transparent;
 }
 .style-title-1 {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 header {
 	background: #1a1a1a;
@@ -163,7 +164,7 @@ header {
 
 .footer {
 	padding: 40px 0;
-	background: #e6e6e6;
+	background: @main;
 	font-size: 14px;
 	.container {
 		padding: 0;
@@ -265,8 +266,7 @@ header {
 
 .single-video {
 	position: relative;
-	padding-bottom: 56.25%; /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
-	// padding-top: 30px;
+	padding-bottom: 56.25%; 
 	height: 0;
 	overflow: hidden;
 	margin-left: 15px;
@@ -280,6 +280,54 @@ header {
 		height:100%;
 	}
 }
+
+
+
+.info-tooltip {
+  position: relative;
+
+  .tooltiptext {
+	  visibility: hidden;
+	  width: 350px;
+	  background-color: #fff;
+	  color: @main;
+	  padding: 10px;
+	  border-radius: 6px;
+	  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	  /* Position the tooltip text */
+	  position: absolute;
+	  z-index: 1;
+	  bottom: 35%;
+	  left: 105%;
+
+	  /* Fade in tooltip */
+	  opacity: 0;
+	  transition: opacity 0.3s;
+
+	  &::after {
+		  content: "";
+		  position: absolute;
+		  top: 50%;
+		  left: 0;
+		  margin-left: -16px;
+		  border-width: 8px;
+		  border-style: solid;
+		  border-color: transparent #fff transparent transparent;
+
+	  }
+	}
+
+}
+
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.info-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
 
 
 
@@ -304,6 +352,9 @@ header {
 	}
 	.single-info h1 {
 		font-size: 26px;
+	}
+	.tooltiptext {
+		display: none;
 	}
 
 }

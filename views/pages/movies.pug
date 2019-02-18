@@ -7,9 +7,10 @@ block content
 		h1.style-title-1 Популярные фильмы онлайн
 		.all-movies
 			mixin movieCard(movie)
-				a.item(href=/movie/ + movie.id)
+				a.item.info-tooltip(href=/movie/ + movie.id)
 					img(src=movie.poster,alt=movie.alt)
 					h3.movie-title= movie.title
 					p= movie.year + ", " + movie.genre
+					span.tooltiptext= movie.description.slice(0,380) + '...'
 			for movie in movies
 				+movieCard(movie)

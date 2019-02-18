@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "git": "^0.1.5",
-    "nodemon": "^1.18.9"
-  },
-  "devDependencies": {
     "express": "^4.16.4",
     "less-middleware": "^3.1.0",
     "path": "^0.12.7",
+    "git": "^0.1.5",
     "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9" 
   },
   "scripts": {
     "start": "node app.js",
