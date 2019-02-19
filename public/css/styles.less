@@ -65,9 +65,7 @@ header {
 }
 
 .main-slider {
-	.item {
 
-	}
 	.owl-dots {
 		position: absolute;
 		bottom: 20px;
@@ -109,13 +107,17 @@ header {
 	padding: 60px 0;
 }
 
+.movie-item img {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 .item-slider {
 	.owl-nav {
 		position: absolute;
 		bottom: calc(100% - -20px);
 		right: 0;
 		button {
-			border: 1px solid #dedede !important;
+			border: 1px solid @main !important;
 			
 		}
 		span {
@@ -282,7 +284,6 @@ header {
 }
 
 
-
 .info-tooltip {
   position: relative;
 
@@ -329,7 +330,19 @@ header {
 
 
 
-
+@media screen and (min-width: 1024px) {
+	.info-tooltip:nth-child(5n) {
+		.tooltiptext {
+			right: 103%;
+			left: auto;
+			&::after {
+				right: -16px;
+				left: auto;
+				border-color: transparent transparent transparent #fff;
+			}
+		}
+	}
+}
 
 @media screen and (max-width: 1024px) {
 	.movies-block {
@@ -341,7 +354,20 @@ header {
 	.all-movies .item {
 		width: calc(33% - 19px);
 	}
+	.info-tooltip:nth-child(3n) {
+		.tooltiptext {
+			right: 103%;
+			left: auto;
+			&::after {
+				right: -16px;
+				left: auto;
+				border-color: transparent transparent transparent #fff;
+			}
+
+		}
+	}
 }
+
 @media screen and (max-width: 768px) {
 	.footer .footer-title {
 		margin-bottom: 10px;
@@ -393,6 +419,9 @@ header {
 		justify-content: center;
 	}
 }
+
+
+
 //change navbar breakpoint from 769px to 1024px 
 @media (max-width: 1024px) {
     .navbar-header {

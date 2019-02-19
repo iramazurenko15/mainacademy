@@ -4,7 +4,7 @@ block title
 	| Главная страница
 block content
 	.owl-carousel.owl-theme.main-slider
-		.item
+		a.item(href="#")
 			img(src='/img/hotel-artemida.jpg')
 		.item
 			img(src='/img/shpion-kotoryiy-menya-kinul.jpg')
@@ -15,7 +15,7 @@ block content
 			h1.style-title-1 Фильмы
 			.owl-carousel.owl-theme.item-slider
 				mixin movieCard(movie)
-					a.item(href=/movie/ + movie.id)
+					a.item.movie-item(href=/movie/ + movie.id)
 						img(src=movie.poster,alt=movie.alt)
 						h3.movie-title= movie.title
 						p= movie.year + ", " + movie.genre
