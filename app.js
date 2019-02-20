@@ -5,6 +5,7 @@ var express = require('express'),
     less = require('less-middleware');
 
 
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views/pages'));
 app.use(less(__dirname + '/public'));
@@ -27,6 +28,9 @@ app.get('/movies', routes.movies);
 
 //movies single page
 app.get('/movie/:id?', routes.movie_single);
+
+// search result page
+app.get('/results', routes.results);
 
 //404 page
 app.get('*', routes.notFound);

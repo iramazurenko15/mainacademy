@@ -1,5 +1,5 @@
 var moviesJSON = require('../movies.json');
-
+var request = require('request');
 
 exports.home = function(req, res) {
 var movies = moviesJSON.movies;
@@ -29,6 +29,23 @@ exports.movie_single = function(req, res ) {
 	} else {
 		res.render('notFound');
 	}
+};
+
+
+exports.results = function(req, res) {
+	var query = req.query.search;
+	console.log(query);
+    var url = 'https://www.omdbapi.com/?s=' + query + '&apikey=51e470d0';
+    console.log(url);
+    request(url, function(error, response, body) {
+        if(!error && response.statusCode == 200) {
+        	console.log("bla");
+            var data = JSON.parse(body)
+            res.render('results', {
+            	data: data
+            });
+        } 
+    });
 };
 
 exports.notFound = function(req, res) {

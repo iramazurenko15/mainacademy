@@ -27,6 +27,7 @@ $(document).ready(function(){
         }
     }
   })
+
 // Open modal window
   $('#sign-in').click( function(event){
     event.preventDefault(); 
@@ -48,6 +49,19 @@ $(document).ready(function(){
         }
       );
   });
+
+
+//load more movies
+  var size_movies = $(".all-movies .movie-item").length;
+  var x=9;
+  $('.all-movies .movie-item:gt('+x+')').hide();
+  $('#load-more').click(function () {
+    x= (x+10 <= size_movies) ? x+10 : size_movies;
+    $('.all-movies .movie-item:lt('+x+')').show();
+  });
+
+
+
 });
 
 

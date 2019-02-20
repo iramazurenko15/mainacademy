@@ -1,0 +1,15 @@
+extends ../main
+
+block title
+	| Результат поиска
+block content
+	.movies-block.movies-page.container
+		h1.style-title-1 Результаты поиска
+		.all-movies
+			mixin movieCard(movie)
+				.item.movie-item.info-tooltip
+					img(src=movie['Poster'])
+					h3.movie-title= movie['Title']
+					p= movie['Year']
+			for movie in data['Search']
+				+movieCard(movie)
