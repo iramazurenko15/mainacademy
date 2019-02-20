@@ -7,9 +7,12 @@ body {
 	margin: 0px;
 	background: #e6e6e6;
 }
-
+button {
+	background: @active;
+}
 button:active, button:hover, button:focus {
     outline: 0 !important;
+    background: @hover;
 }
 h1,h2,h3,h4 {
 	margin: 0;
@@ -20,9 +23,7 @@ ul {
 	list-style: none;
 }
 
-button {
-	outline: none;
-}
+
 a:hover, a:focus {
 	color:@hover !important;
 }
@@ -335,11 +336,8 @@ header {
 #load-more {
 	margin-top: 20px;
     font-size: 18px;
-    background: #ff3300d4;
+    background: @active;
     color: #fff;
-    &:hover {
-    	background: #f30;
-    }
 }
 
 

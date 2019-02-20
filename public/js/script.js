@@ -61,6 +61,12 @@ $(document).ready(function(){
   });
 
 
+  // don't submit search form if value is empty
+  $('#search').click(function() {
+    if ($('.search-value').val() == "") {
+      return false;
+    }
+  })
 
 });
 

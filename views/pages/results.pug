@@ -5,11 +5,14 @@ block title
 block content
 	.movies-block.movies-page.container
 		h1.style-title-1 Результаты поиска
-		.all-movies
-			mixin movieCard(movie)
-				.item.movie-item.info-tooltip
-					img(src=movie['Poster'])
-					h3.movie-title= movie['Title']
-					p= movie['Year']
-			for movie in data['Search']
-				+movieCard(movie)
+		if(data['Search'] === undefined)
+			p По даному запросу ничего не найдено
+		else 
+			.all-movies
+				mixin movieCard(movie)
+					.item.movie-item.info-tooltip
+						img(src=movie['Poster'])
+						h3.movie-title= movie['Title']
+						p= movie['Year']
+				each movie in data['Search']
+					+movieCard(movie)
