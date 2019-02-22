@@ -28,7 +28,7 @@ $(document).ready(function(){
     }
   })
 
-// Open modal window
+  // Open modal window
   $('#sign-in').click( function(event){
     event.preventDefault(); 
     $('#overlay').fadeIn(400, 
@@ -51,17 +51,28 @@ $(document).ready(function(){
   });
 
 
-//load more movies
-  var size_movies = $(".all-movies .movie-item").length;
+  //load more movies
+  var moviesLength = $(".all-movies .movie-item").length;
   var x=9;
-  $('.all-movies .movie-item:gt('+x+')').hide();
-  $('#load-more').click(function () {
-    x= (x+10 <= size_movies) ? x+10 : size_movies;
-    $('.all-movies .movie-item:lt('+x+')').show();
-  });
+  if(moviesLength > 10) {
+    $('#load-more').removeClass('hide');
+    $('.all-movies .movie-item:gt('+x+')').hide();
+    
+    $('#load-more').click(function() {
+      if(x+10 <= moviesLength) {
+        x = x+10;
+      }
+      else {
+        x = moviesLength;
+        $('#load-more').addClass('hide');
+      }
+      $('.all-movies .movie-item:lt('+x+')').show();
+    });
+  }
 
 
-  // don't submit search form if value is empty
+
+  // don't submit search form if search field value is empty
   $('#search').click(function() {
     if ($('.search-value').val() == "") {
       return false;

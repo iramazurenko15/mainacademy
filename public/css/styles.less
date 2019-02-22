@@ -7,12 +7,14 @@ body {
 	margin: 0px;
 	background: #e6e6e6;
 }
-button {
-	background: @active;
+
+.btn-style {
+	background: @active !important;
+	color: #fff !important;
 }
-button:active, button:hover, button:focus {
+.btn-style:active,.btn-style:hover, .btn-style:focus {
     outline: 0 !important;
-    background: @hover;
+    background: @hover !important;
 }
 h1,h2,h3,h4 {
 	margin: 0;
@@ -22,7 +24,6 @@ ul {
 	padding: 0;
 	list-style: none;
 }
-
 
 a:hover, a:focus {
 	color:@hover !important;
@@ -45,6 +46,26 @@ a {
 .style-title-1 {
 	margin-bottom: 30px;
 }
+
+.movie-title {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px
+}
+
+.movies-block {
+	padding: 60px 0;
+}
+
+.movie-item img {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hide {
+	display: none;
+}
+
+// styles for header
 header {
 	background: #1a1a1a;
 	a {
@@ -68,8 +89,9 @@ header {
 	background: @active;
 }
 
-.main-slider {
 
+// styles for main slider 
+.main-slider {
 	.owl-dots {
 		position: absolute;
 		bottom: 20px;
@@ -87,9 +109,7 @@ header {
 		span {
 			font-size: 50px;
 		}
-
 	}
-
 	.owl-prev {
 		margin-left: 30px !important;
 		left: 0;
@@ -98,23 +118,11 @@ header {
 		margin-right: 30px !important;
 		right: 0;
 	}
-
 }
 
-.movie-title {
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 5px
-}
 
-.movies-block {
-	padding: 60px 0;
-}
 
-.movie-item img {
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
+// styles for movies-carusel
 .item-slider {
 	.owl-nav {
 		position: absolute;
@@ -134,7 +142,7 @@ header {
 	}
 }
 
-
+// styles for movies page
 .movies-page {
 	padding-top: 30px;
 }
@@ -168,6 +176,8 @@ header {
 	}
 }
 
+
+//styles for footer
 .footer {
 	padding: 40px 0;
 	background: @main;
@@ -287,7 +297,7 @@ header {
 	}
 }
 
-
+// show movie-description
 .info-tooltip {
   position: relative;
 
@@ -324,8 +334,6 @@ header {
 
 }
 
-
-
 /* Show the tooltip text when you mouse over the tooltip container */
 .info-tooltip:hover .tooltiptext {
   visibility: visible;
@@ -336,8 +344,22 @@ header {
 #load-more {
 	margin-top: 20px;
     font-size: 18px;
-    background: @active;
-    color: #fff;
+}
+
+//Page not found style 
+.not-found-page {
+	font-size: 20px;
+	height: 50vh;
+	position: relative;
+	.not-found-inner {
+		text-align: center;
+		position: absolute;
+		top: 25%;
+		left: 41%;
+	}
+	h1 {
+		font-size: 56px;
+	}
 }
 
 

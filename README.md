@@ -1,8 +1,8 @@
 # Online Cinema
 Online Cinema is a  web application that contains a catalog of movies and information about them.
-### Tech
+### Technologies
 
-My project uses a number of open source projects:
+This project uses a number of open source projects:
 
 * node.js - evented I/O for the backend
 * Express.js - fast node.js network app framework 
